@@ -6,6 +6,8 @@
 static bool mpuOk = false;
 
 void setup() {
+  pinMode(LED_BUILTIN, OUTPUT);
+  Serial.begin(115200);
   pinMode(25, OUTPUT);
   digitalWrite(25, HIGH);
   Serial.begin(SERIAL_BAUD);
@@ -18,9 +20,14 @@ void setup() {
 }
 
 void loop() {
+  digitalWrite(LED_BUILTIN, HIGH);
+  Serial.println("# LED ON");
   gpsUpdate();
   static uint32_t lastDbg = 0;
   if (millis() - lastDbg >= 5000) {
+    
+    digitalWrite(LED_BUILTIN, LOW);
+    Serial.println("# LED OFF");
     lastDbg = millis();
     gpsDebug();
   }

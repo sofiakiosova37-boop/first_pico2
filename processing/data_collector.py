@@ -2,7 +2,7 @@ import serial
 from datetime import datetime
 import os
 
-PORT = "COM8"   
+PORT = "COM4"   
 BAUD = 115200
 HEADER = "ms,ax,ay,az,gx,gy,gz,lat,lng,alt,sats,fix"
 FIELDS = len(HEADER.split(","))
