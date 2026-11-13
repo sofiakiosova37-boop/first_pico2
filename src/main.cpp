@@ -19,6 +19,11 @@ void setup() {
 
 void loop() {
   gpsUpdate();
+  static uint32_t lastDbg = 0;
+  if (millis() - lastDbg >= 5000) {
+    lastDbg = millis();
+    gpsDebug();
+  }
   uint32_t now = millis();
   static uint32_t last = 0;
   if (!mpuOk) {

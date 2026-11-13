@@ -10,7 +10,8 @@ struct GpsData {
 };
 
 void gpsInit();
-void gpsUpdate();          
+void gpsUpdate();
+void gpsDebug();          
 GpsData gpsGet();
 
 #endif

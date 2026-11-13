@@ -17,6 +17,15 @@ void gpsUpdate() {
   }
 }
 
+void gpsDebug() {
+  Serial.print("# GPS chars=");
+  Serial.print(parser.charsProcessed());
+  Serial.print(" fixSentences=");
+  Serial.print(parser.sentencesWithFix());
+  Serial.print(" badChecksum=");
+  Serial.println(parser.failedChecksum());
+}
+
 GpsData gpsGet() {
   GpsData d;
   d.valid = parser.location.isValid() && parser.location.age() < 2000;;

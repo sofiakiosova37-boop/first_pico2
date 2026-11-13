@@ -20,13 +20,19 @@ try:
         
         while True:
             line = ser.readline().decode("utf-8", errors="ignore").strip()
-            if line:
-                parts = line.split(",")
-                if len(parts) == FIELDS and parts[0].isdigit():
-                    f.write(line + "\n")
-                    f.flush()
-                    os.fsync(f.fileno())
-                    print(line)
+            if not line:
+                continue
+
+            if line.startswith("#"):
+                print(line)
+                continue
+
+            parts = line.split(",")
+            if len(parts) == FIELDS and parts[0].isdigit():
+                f.write(line + "\n")
+                f.flush()
+                os.fsync(f.fileno())
+                print(line)
                     
 except KeyboardInterrupt:
     print("\nStopped by user. Data saved.")
