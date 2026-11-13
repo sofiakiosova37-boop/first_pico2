@@ -17,6 +17,8 @@ bool mpuInit() {
   }
 
   // range for rocket
+  mpu.setDLPFMode(MPU6050_DLPF_BW_42);
+  mpu.setRate(9);  
   mpu.setFullScaleAccelRange(MPU6050_ACCEL_FS_16);
   mpu.setFullScaleGyroRange(MPU6050_GYRO_FS_1000);
   return true;

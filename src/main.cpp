@@ -14,7 +14,7 @@ void setup() {
   mpuOk = mpuInit();
   if (!mpuOk) Serial.println("MPU6050 not found! Check connection.");
   gpsInit();
-  Serial.println("ms,ax,ay,az,gx,gy,gz,lat,lng,alt,sats");
+  Serial.println("ms,ax,ay,az,gx,gy,gz,lat,lng,alt,sats,fix");
 }
 
 void loop() {
@@ -51,5 +51,6 @@ void loop() {
   Serial.print(g.lat, 6);  Serial.print(',');
   Serial.print(g.lng, 6);  Serial.print(',');
   Serial.print(g.alt, 1);  Serial.print(',');
-  Serial.println(g.sats);
+  Serial.print(g.sats);    Serial.print(',');
+  Serial.println(g.valid ? 1 : 0);
     }
